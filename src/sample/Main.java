@@ -1,8 +1,5 @@
 package sample;
 
-import java.io.IOException;
-
-
 //Vi bruger vores Main klasse som "Test klasse" som beskrevet i exercise 1. Man kunne sagtens
 //have lavet en anden java classe og så bare have kaldt den her, men det er i regelen det samme.
 //måske en del mindre rod i Main klassen, men ja. Smag og behag.
@@ -17,7 +14,7 @@ public class Main {
     public static Teacher teacher1 = new Teacher(103, "REEEE", "RE");
     public static Student student1 = new Student(104,"Mike", "CS");
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         //Duplicate ID check - Helt sikkert en bedre måde at gøre det på. stream.distinct() måske
         pm.addPerson(test1);
         Person test4 = new Person(100,"Hans");

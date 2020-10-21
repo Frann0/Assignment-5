@@ -69,22 +69,29 @@ public class MainMenu extends Menu {
     //Resten af funktionerne, er sådan set bare for at printe ud hvad der er i vores lister og displaye dem på skærmen.
     //man kan altid lege med spacingen osv. for at få det til at se pænt ud. De fungere alle på samme måde
     //bare med forskellige lister, alt efter om man valgte Personer, teachers eller students.
+
+    //Vi bruger printf. Det fungere som String.format i person, teacher og student klasser. her bruger vi ud over de
+    //andre funktioner i format stringen, %n som egentligt bare betyder new line. Altså den skal starte en ny linje
+    //det gjorde println nemlig for os før. Og hvis vi ikke gør det, ville første element i listen
+    //stå oppe ved headeren.
     private void printStudents() {
-        System.out.println("ID  Name    Email               Education    AVG. GRADE");
+        System.out.printf("%-5s%-10s%-30s%-10s%-5s %n", "ID", "Name", "Email", "Education", "Avg. Grade");
         for (Student s : students) {
             System.out.println(s.toString());
         }
     }
 
     private void printPersons() {
-        System.out.println("ID      Name    Email");
+        System.out.printf("%-5s%-15s%-35s %n", "ID", "Name", "Email");
+        //System.out.println("ID      Name    Email");
         for (Person p : persons) {
             System.out.println(p.toString());
         }
     }
 
     private void printTeachers() {
-        System.out.println("ID  Name    Email   Initials    MAIN");
+        System.out.printf("%-5s%-10s%-20s%-10s%-5s %n", "ID", "Name", "Email", "Initials", "Main");
+        //System.out.println("ID  Name    Email   Initials    MAIN");
         for (Teacher t : teachers) {
             System.out.println(t.toString());
         }

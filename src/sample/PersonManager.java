@@ -10,9 +10,9 @@ public class PersonManager {
     //en student i teacher listen, bruger vi <> til at specificere hvilket slags
     //objekt der kan være i listen. Det er ikke kun objekter der kan specificeres, men også
     //Integer for hele tal, eller Strings for strings osv.
-    private List<Person> persons = new ArrayList<Person>();
-    private List<Teacher> teachers = new ArrayList<Teacher>();
-    private List<Student> students = new ArrayList<Student>();
+    private List<Person> persons = new ArrayList<>();
+    private List<Teacher> teachers = new ArrayList<>();
+    private List<Student> students = new ArrayList<>();
 
     //Overflødig kode, men skulle være der ifølge UML diagrammet.
     public PersonManager() {
@@ -53,6 +53,7 @@ public class PersonManager {
                     //System.out.println("Cant add a person with the same id");
                     //hvis det er samme id så skal den sætte booleanen til at være true.
                     idExists = true;
+                    break;
                 }
             }
 
@@ -107,6 +108,7 @@ public class PersonManager {
                 if (t1.getId() == teacher1.getId()) {
                     //System.out.println("Cant add a teacher with the same id");
                     idExists = true;
+                    break;
                 }
             }
 
@@ -128,6 +130,7 @@ public class PersonManager {
                 if (s1.getId() == student1.getId()) {
                     //System.out.println("Cant add a student with the same id");
                     idExists = true;
+                    break;
                 }
             }
 

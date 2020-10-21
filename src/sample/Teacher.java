@@ -6,7 +6,7 @@ import java.util.List;
 public class Teacher extends Person{
     //fungere på samme måde som Person eller Student, hvor vi laver en Liste hvor i der kun kan komme
     //Strings i dette tilfælde.
-    private List<String> subjects = new ArrayList<String>();
+    private List<String> subjects = new ArrayList<>();
     private String initials;
     private double salary;
 
@@ -47,6 +47,15 @@ public class Teacher extends Person{
     //vores lærers hovedfag. Beskrevet på moodle som at være det første element i vores læres fag liste, AKA index 0.
     @Override
     public String toString() {
-        return getId() + "  " + getName() + "   " + getEmail() + "  " + getInitials() + "   " + getSubjects().get(0);
+        //Vi bruger String.Format til at formatere stringen. Så der er regelmæssige mellemrum imellem tingene.
+        //Det ser generelt bedre ud. For at give et generelt overblik over format formen så
+        //kan man dele stringen op. For hver element bag stringen skal der være et % tegn
+        //f.eks %-5s refere til getID() stringen. - tegnet refere til hvilken side den skal holde sig til. -betyder
+        //at den skal holde sig til venstre margen, og hvis den ikke var der, så skal den holde sig til højre.
+        //5 refere til hvor meget mellemrum der skal være bag den. Det er her det er brugbart for at holde en specifik
+        //mellemrum mellem elementerne. s er bare datatypen den forventer det element har. s for String, d for Integer
+        //f for Float, osv. baeldung.com/java-printstream-printf giver et godt overview over det.
+        return String.format("%-5s%-10s%-20s%-10s%-5s", getId(), getName(), getEmail(), getInitials(), getSubjects().get(0));
+        //return getId() + "  " + getName() + "   " + getEmail() + "  " + getInitials() + "   " + getSubjects().get(0);
     }
 }

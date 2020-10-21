@@ -6,7 +6,7 @@ import java.util.List;
 public class Student extends Person{
     //initialisere vores Liste gradeReport til et nyt ArrayList objekt, som kun kan indeholde GradeInfo objekter.
     //fungere på samme måde som vores persons liste i PersonManager klassen.
-    private List<GradeInfo> gradeReport = new ArrayList<GradeInfo>();
+    private List<GradeInfo> gradeReport = new ArrayList<>();
     private String education;
 
     public Student(int id,String name,String education){
@@ -38,8 +38,8 @@ public class Student extends Person{
         int allGrades = 0;
         //totalSubjects er mængden af fag vi har. Aka størrelsen af vores liste.
         int totalSubjects = gradeReport.size();
-        for (int i = 0; i < gradeReport.size(); i++ ){
-            allGrades += (double) gradeReport.get(i).getGrade();
+        for (GradeInfo gradeInfo : gradeReport) {
+            allGrades += (double) gradeInfo.getGrade();
         }
         return allGrades/totalSubjects;
     }
@@ -49,7 +49,7 @@ public class Student extends Person{
     //den string "Subject" som er i parameteren til denne funktion, er en del af vores fag.
     //hvis den er det, så returnere den vores karakter i det fag.
     //her er det dumme. Hvis vi ikke har det Subject, så returnere den jo bare det første
-    //fag i listens karakter. Så hvis jeg havde spurgt efter en karakter i f.eks dansk, men jeg ikke havde dansk
+    //fag i listens, karakter. Så hvis jeg havde spurgt efter en karakter i f.eks dansk, men jeg ikke havde dansk
     //så ville den tage karakteren der stod på den første plads i listen, det kunne være f.eks Engelsk.
     public int getGrade(String Subject){
         int index = 0;
@@ -70,7 +70,16 @@ public class Student extends Person{
     //toString bruges her for at vide hvad der skal displayes. I forhold til vores Student
     //skal den vise, ID, Navn, Email, Uddannelse og gennemsnitlige Karakter.
     public String toString(){
-        return getId() + "  " + getName() + "   " + getEmail() + "  " + getEducation() + "   " + getAverageGrade();
+        //Vi bruger String.Format til at formatere stringen. Så der er regelmæssige mellemrum imellem tingene.
+        //Det ser generelt bedre ud. For at give et generelt overblik over format formen så
+        //kan man dele stringen op. For hver element bag stringen skal der være et % tegn
+        //f.eks %-5s refere til getID() stringen. - tegnet refere til hvilken side den skal holde sig til. -betyder
+        //at den skal holde sig til venstre margen, og hvis den ikke var der, så skal den holde sig til højre.
+        //5 refere til hvor meget mellemrum der skal være bag den. Det er her det er brugbart for at holde en specifik
+        //mellemrum mellem elementerne. s er bare datatypen den forventer det element har. s for String, d for Integer
+        //f for Float, osv. baeldung.com/java-printstream-printf giver et godt overview over det.
+        return String.format("%-5s%-10s%-30s%-10s%-5s", getId(), getName(), getEmail(), getEducation(), getAverageGrade());
+        //return getId() + "  " + getName() + "   " + getEmail() + "  " + getEducation() + "   " + getAverageGrade();
     }
 
 }
